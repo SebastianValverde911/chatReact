@@ -7,7 +7,21 @@
 .container-logo {
     display: flex;
     justify-content: center;
-    
+}
+
+.App-logo {
+    width: 400px;
+    height: 400px;
+    animation: rotacion 20s linear infinite;
+}
+
+@keyframes rotacion {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 form {
@@ -16,10 +30,9 @@ form {
     gap: 4px; 
     background-color: rgba(0, 0, 0, 0.5);
     width: 240px;
-    padding: 10px;
+    padding: 25px;
     color: white;
     border-radius: 8px;
-    
 }
 
 form input {
