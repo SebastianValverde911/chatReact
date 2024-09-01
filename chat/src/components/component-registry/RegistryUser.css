@@ -1,15 +1,15 @@
-.container-all-login {
+.container-registry {
     height: 100%;
     background-color: #282c34;
 }
 
-.container-all-login .container-form,
-.container-all-login .container-logo {
+.container-registry .container-form,
+.container-registry .container-logo {
     display: flex;
     justify-content: center;
 }
 
-.container-all-login .App-logo {
+.container-registry .App-logo {
     width: 400px;
     height: 400px;
     animation: rotacion 20s linear infinite;
@@ -24,7 +24,7 @@
     }
 }
 
-.container-all-login form {
+.container-registry form {
     display: flex;
     flex-direction: column;
     gap: 4px; 
@@ -35,13 +35,13 @@
     border-radius: 8px;
 }
 
-.container-all-login form input {
+.container-registry form input {
     border-radius: 4px;
     border-color: #c2c2c2;
     height: 25px;
 }
 
-.container-all-login form .btn-login {
+.container-registry form .btn-login {
     background-color: #61dafb;
     border: 1px solid #61dafb;
     border-radius: 8px;
@@ -51,15 +51,17 @@
     margin-top: 15px;
 }
 
-.container-all-login hr.line-separate {
+.container-registry hr.line-separate {
     width: 100%;
 }
 
-.container-all-login form button.btn-create-account {
+.container-registry form button.btn-create-account {
     background-color: #61dafb;
     border: 1px solid #61dafb;
     border-radius: 8px;
     height: 25px;
     color: white;
+    margin-top: 20px;
+    cursor: pointer;
 }
 

@@ -19,21 +19,25 @@ const Login = () => {
         e.target.pass.value = '';
     };
 
+    const registryUser = () => {
+        navigate('/registry-user');
+    };
+
     return (
-        <div>
-            <div className='container-all-login'>
-                <div className='container-logo'>
-                    <img className="App-logo" src={logo} />
-                </div>
-                <div className='container-form'>
-                    <form onSubmit={ingresarApp}>
-                        <label>Email</label>
-                        <input type='text' name="email" />
-                        <label>Password</label>
-                        <input type='password' name="pass" />
-                        <button type='submit'>Login</button>
-                    </form>
-                </div>
+        <div className='container-all-login'>
+            <div className='container-logo'>
+                <img className="App-logo" src={logo} />
+            </div>
+            <div className='container-form'>
+                <form onSubmit={ingresarApp}>
+                    <label>Email</label>
+                    <input type='text' name="email" />
+                    <label>Password</label>
+                    <input type='password' name="pass" />
+                    <button type='submit' className='btn-login'>LOGIN</button>
+                    <hr className='line-separate' />
+                    <button className='btn-create-account' onClick={registryUser}>CRATE ACCOUNT</button>
+                </form>
             </div>
         </div>
     )
