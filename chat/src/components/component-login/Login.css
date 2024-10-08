@@ -49,6 +49,7 @@
     width: 100px;
     color: white;
     margin-top: 15px;
+    cursor: pointer;
 }
 
 .container-all-login hr.line-separate {
@@ -61,5 +62,6 @@
     border-radius: 8px;
     height: 25px;
     color: white;
+    cursor: pointer;
 }
 

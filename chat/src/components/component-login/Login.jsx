@@ -36,7 +36,7 @@ const Login = () => {
                     <input type='password' name="pass" />
                     <button type='submit' className='btn-login'>LOGIN</button>
                     <hr className='line-separate' />
-                    <button className='btn-create-account' onClick={registryUser}>CRATE ACCOUNT</button>
+                    <button className='btn-create-account' onClick={registryUser}>CREATE ACCOUNT</button>
                 </form>
             </div>
         </div>

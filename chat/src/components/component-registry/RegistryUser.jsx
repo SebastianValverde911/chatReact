@@ -33,7 +33,7 @@ const RegistryUser = () => {
                         <input type='text' name="email" />
                         <label>Password</label>
                         <input type='password' name="password" />
-                        <button type="submit" className='btn-create-account'>CRATE ACCOUNT</button>
+                        <button type="submit" className='btn-create-account'>CREATE ACCOUNT</button>
                     </form>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import Home from './components/component-home/Home';
 import Login from './components/component-login/Login';
 import RegistryUser from './components/component-registry/RegistryUser';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (
