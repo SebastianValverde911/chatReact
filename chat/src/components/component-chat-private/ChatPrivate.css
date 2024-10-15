@@ -33,9 +33,9 @@
     width: 10px;
     height: 10px;
     position: absolute;
-    right: 70px;
+    left: 4px;
     background-color: #c2c2c2;
-    top: 8px;
+    top: 2px;
     border-radius: 20px;
 }
 

@@ -5,6 +5,7 @@ import {ChatPrivate} from "../component-chat-private/ChatPrivate";
 
 const Home = () => {
     const [userData, setUserData] = useState(null);
+    const [chatsData, setChatsData] = useState([]);
 
     useEffect(()=>{
         const fetchUserData = async () => {
@@ -21,8 +22,16 @@ const Home = () => {
     },[]);
 
     const printChatLeftContainer = (data) => {
-        debugger;
         const dataUser = userData.find(userData => userData.id === data);
+        const verifyUser = chatsData.find(el => el.id === dataUser.id);
+        if(verifyUser === undefined) {
+            setChatsData([...chatsData,dataUser]);
+        }
+    }
+    
+    const removeChatLeftContainer = (id) => {
+        const newChat = chatsData.filter(elemt => elemt.id !== id);
+        setChatsData(newChat);
 
     }
 
@@ -30,9 +39,14 @@ const Home = () => {
         <div className="containar-component-home">
             <div className="container-left">
                 <div className="container-chat-private-home">
-                    <ChatPrivate />
-                    <ChatPrivate />
-                    <ChatPrivate />
+                    {
+                        chatsData.length > 0 ? (
+                            chatsData.map((chat => (
+                                <ChatPrivate key={chat.id} id={chat.id} name={chat.name} email={chat.email} removeChatLeftContainer = {removeChatLeftContainer} />
+                            )))
+                        ) : (<></>)
+                        
+                    }
                 </div>
             </div>
             <div className="container-right">
