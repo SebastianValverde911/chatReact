@@ -2,9 +2,12 @@ import React from "react";
 import './RegistryUser.css';
 import logo from '../../logo.svg';
 import Service from "../../services/services";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const RegistryUser = () => {
+    const navigate = useNavigate();
 
     const formRegistryUser = (e) => {
         e.preventDefault();
@@ -18,6 +21,10 @@ const RegistryUser = () => {
             console.log(error);
         })
     };
+
+    const signin = () => {
+        navigate('/');
+    }
 
     return(
         <div className="container-registry">
@@ -34,6 +41,7 @@ const RegistryUser = () => {
                         <label>Password</label>
                         <input type='password' name="password" />
                         <button type="submit" className='btn-create-account'>CREATE ACCOUNT</button>
+                        <button className='btn-create-account' onClick={signin}>SIGN IN</button>
                     </form>
                 </div>
             </div>
