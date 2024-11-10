@@ -17,6 +17,7 @@ const RegistryUser = () => {
 
         Service.registryUserForm(name,email,password).then(response => {
             console.log(response);
+            navigate('/');
         }).catch((error)=>{
             console.log(error);
         })

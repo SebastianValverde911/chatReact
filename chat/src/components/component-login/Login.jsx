@@ -2,6 +2,7 @@ import logo from '../../logo.svg';
 import React from "react";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import Service from '../../services/services';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -11,12 +12,15 @@ const Login = () => {
         const email = e.target.email.value;
         const pass = e.target.pass.value;
 
-        console.log(email,pass);
-
-        navigate('/home');
-
-        e.target.email.value = '';
-        e.target.pass.value = '';
+        Service.login(email,pass).then(response => {
+            if(response.data.ok) {
+                navigate('/home');
+            } else {
+                console.log(response.data.msg);
+            }
+        }).catch((error)=>{
+            console.log(error.response.data.msg);
+        })
     };
 
     const registryUser = () => {

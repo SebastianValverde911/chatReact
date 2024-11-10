@@ -5,7 +5,7 @@ const {crearUsuario, loginUsuario, revalidarToken} = require('../controllers/aut
 const {validarCampos} = require('../middlewares/validar-campos');
 
 
-router.post('/',loginUsuario)
+router.post('/login',loginUsuario)
 
 router.post('/new', 
     [

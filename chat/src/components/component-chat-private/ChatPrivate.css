@@ -4,7 +4,7 @@
 
 .container-chat-private {
     width: 300px;
-    background: purple;
+    background: #FFF;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,34 @@
 .container-chat-private .input-chat {
     height: 40px;
     width: 100%;
-    background: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #c2c2c2;
+}
+
+.container-chat-private .input-chat .container-input-send-message {
+    flex: 1;
+    padding: 5px;
+}
+
+.container-chat-private .input-chat .container-input-send-message input {
+    width: 90%;
+    height: 20px;
+    border-radius: 6px;
+}
+
+.container-chat-private .input-chat .container-btn-send-message {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(28, 42, 240);
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
 }
 
 .container-chat-private .header-chat .icon-min-close .icons {

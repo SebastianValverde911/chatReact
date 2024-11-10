@@ -27,7 +27,14 @@ export const ChatPrivate = (data) => {
                 </div>
             </div>
             <div className="container-chat">Contenedor</div>
-            <div className="input-chat">input</div>
+            <div className="input-chat">
+                <div className="container-input-send-message">
+                    <input type="text" />
+                </div>
+                <div className="container-btn-send-message">
+                    <div class="btn-send"><i className="bi bi-send"></i></div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -8,6 +8,13 @@ class Service {
             password
         });
     }
+
+    login(email,password) {
+        return axios.post('http://localhost:4000/api/auth/login/',{
+            email,
+            password
+        });
+    }
 }
 
 export default new Service;
