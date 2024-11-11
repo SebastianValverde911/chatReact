@@ -3,8 +3,12 @@ import './Home.css';
 import CardContac from "../component-card-contact/CardContac";
 import {ChatPrivate} from "../component-chat-private/ChatPrivate";
 import Services from "../../services/services";
+import { showAlert, hideAlert } from "../../store/reducerAlert/alertSlice";
+import { useDispatch } from "react-redux";
+import Alert from "../component-alert/Alert";
 
 const Home = () => {
+    const dispatch = useDispatch();
     const [userData, setUserData] = useState(null);
     const [chatsData, setChatsData] = useState([]);
 
@@ -14,10 +18,19 @@ const Home = () => {
                 /* const response = await fetch('https://jsonplaceholder.typicode.com/users/');
                 const data = await response.json(); */
                 Services.getUsers().then(response => {
-                    debugger;
                     if(response.data.ok) {
                         setUserData(response.data.usuarios);
+                        dispatch(showAlert({type:'success',message:'Usuarios cargados.'}));
+                        setTimeout(() => {
+                            dispatch(hideAlert()) 
+                        }, 2000);
                     }
+                }).catch((error) => {
+                    console.log(error.response.data.msg);
+                    dispatch(showAlert({type:'error',message:error.response.data.msg}));
+                    setTimeout(() => {
+                        dispatch(hideAlert()) 
+                    }, 2000);
                 })
                 //setUserData(data);
             } catch (error) {
@@ -45,6 +58,7 @@ const Home = () => {
     return (
         <div className="containar-component-home">
             <div className="container-left">
+            <Alert />
                 <div className="container-chat-private-home">
                     {
                         chatsData.length > 0 ? (

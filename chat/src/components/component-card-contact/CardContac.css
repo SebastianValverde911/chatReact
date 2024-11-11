@@ -5,6 +5,7 @@
     flex-direction: row;
     background-color: #868585;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .container-card .image-contact {
@@ -27,4 +28,11 @@
    flex-direction: column;
    justify-content: center;
    /* padding-left: 10px; */
+}
+
+.container-card .info-contact .email-user {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

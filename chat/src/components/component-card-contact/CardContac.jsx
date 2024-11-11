@@ -11,8 +11,8 @@ const CardContac = (data) => {
                 <img className="img-user" src = {men} />
             </div>
             <div className="info-contact">
-                <div>{data.name}</div>
-                <div>{data.email}</div>
+                <div className="name-user" title={data.name}>{data.name}</div>
+                <div className="email-user" title={data.email}>{data.email}</div>
             </div>
         </div>
     )
