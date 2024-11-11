@@ -82,6 +82,21 @@ const loginUsuario = async (req, res = express.request) => {
     }
 };
 
+const getUsers = async (req,res) => {
+    try {
+        let usuarios = await Usuario.find().select('name email');
+        res.status(200).json({
+            ok:true,
+            usuarios
+        });
+    } catch(error) {
+        res.status(500).json({
+            ok:false,
+            msg:'Error obteniendo los usuarios.'
+        })
+    }
+}
+
 const revalidarToken = (req, res = express.request) => {
     res.json({
         ok: true
@@ -91,5 +106,6 @@ const revalidarToken = (req, res = express.request) => {
 module.exports = {
     crearUsuario,
     loginUsuario,
-    revalidarToken
+    revalidarToken,
+    getUsers
 }

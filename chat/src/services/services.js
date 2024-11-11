@@ -15,6 +15,10 @@ class Service {
             password
         });
     }
+
+    getUsers() {
+        return axios.get('http://localhost:4000/api/auth/users/');
+    }
 }
 
 export default new Service;

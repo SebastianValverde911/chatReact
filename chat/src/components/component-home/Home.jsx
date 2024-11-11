@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import './Home.css';
 import CardContac from "../component-card-contact/CardContac";
 import {ChatPrivate} from "../component-chat-private/ChatPrivate";
+import Services from "../../services/services";
 
 const Home = () => {
     const [userData, setUserData] = useState(null);
@@ -10,9 +11,15 @@ const Home = () => {
     useEffect(()=>{
         const fetchUserData = async () => {
             try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/users/');
-                const data = await response.json();
-                setUserData(data);
+                /* const response = await fetch('https://jsonplaceholder.typicode.com/users/');
+                const data = await response.json(); */
+                Services.getUsers().then(response => {
+                    debugger;
+                    if(response.data.ok) {
+                        setUserData(response.data.usuarios);
+                    }
+                })
+                //setUserData(data);
             } catch (error) {
                 console.log("Error cargando los usuarios");
             }
@@ -22,15 +29,15 @@ const Home = () => {
     },[]);
 
     const printChatLeftContainer = (data) => {
-        const dataUser = userData.find(userData => userData.id === data);
-        const verifyUser = chatsData.find(el => el.id === dataUser.id);
+        const dataUser = userData.find(userData => userData._id === data);
+        const verifyUser = chatsData.find(el => el._id === dataUser._id);
         if(verifyUser === undefined) {
             setChatsData([...chatsData,dataUser]);
         }
     }
     
     const removeChatLeftContainer = (id) => {
-        const newChat = chatsData.filter(elemt => elemt.id !== id);
+        const newChat = chatsData.filter(elemt => elemt._id !== id);
         setChatsData(newChat);
 
     }
@@ -42,7 +49,7 @@ const Home = () => {
                     {
                         chatsData.length > 0 ? (
                             chatsData.map((chat => (
-                                <ChatPrivate key={chat.id} id={chat.id} name={chat.name} email={chat.email} removeChatLeftContainer = {removeChatLeftContainer} />
+                                <ChatPrivate key={chat._id} id={chat._id} name={chat.name} email={chat.email} removeChatLeftContainer = {removeChatLeftContainer} />
                             )))
                         ) : (<></>)
                         
@@ -58,7 +65,7 @@ const Home = () => {
                 </div>
                 <div className="container-contacts">
                     {userData !== null ? <> {userData.map(user => (
-                    <CardContac key={user.id} id={user.id} name={user.name} email={user.email} printChatLeftContainer={printChatLeftContainer} />
+                    <CardContac key={user._id} id={user._id} name={user.name} email={user.email} printChatLeftContainer={printChatLeftContainer} />
                 ))}</> : <></>}
                 </div>
             </div>

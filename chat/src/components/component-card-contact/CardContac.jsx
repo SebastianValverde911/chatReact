@@ -8,7 +8,7 @@ const CardContac = (data) => {
     return(
         <div className="container-card" data-id={data.id} onClick={() => data.printChatLeftContainer(data.id)}>
             <div className="image-contact">
-                <img className="img-user" src = {woman} />
+                <img className="img-user" src = {men} />
             </div>
             <div className="info-contact">
                 <div>{data.name}</div>
