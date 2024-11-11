@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import './Home.css';
 import CardContac from "../component-card-contact/CardContac";
 import {ChatPrivate} from "../component-chat-private/ChatPrivate";
@@ -6,11 +6,13 @@ import Services from "../../services/services";
 import { showAlert, hideAlert } from "../../store/reducerAlert/alertSlice";
 import { useDispatch } from "react-redux";
 import Alert from "../component-alert/Alert";
+import { UserContext } from "../../context/UserContex";
 
 const Home = () => {
     const dispatch = useDispatch();
     const [userData, setUserData] = useState(null);
     const [chatsData, setChatsData] = useState([]);
+    const {user} = useContext(UserContext);
 
     useEffect(()=>{
         const fetchUserData = async () => {
@@ -19,8 +21,13 @@ const Home = () => {
                 const data = await response.json(); */
                 Services.getUsers().then(response => {
                     if(response.data.ok) {
-                        setUserData(response.data.usuarios);
-                        dispatch(showAlert({type:'success',message:'Usuarios cargados.'}));
+                        let users = response.data.usuarios.filter(e => e._id !== user._id);
+                        if(users.length === 0) {
+                            dispatch(showAlert({type:'info',message:'Crea otro usuario.'}));
+                        } else {
+                            dispatch(showAlert({type:'success',message:'Usuarios cargados.'}));
+                        }
+                        setUserData(users);
                         setTimeout(() => {
                             dispatch(hideAlert()) 
                         }, 2000);

@@ -7,8 +7,9 @@ const Alert = () => {
     let icon = 'x';
     if(type === 'success') {
         icon = 'check';
+    } else if (type === 'info') {
+        icon = 'person-fill';
     }
-    console.log(isActive)
     return(
         <div className="container-mensaje">
             {isActive ? (<div className={`mensaje ${type}`}>
