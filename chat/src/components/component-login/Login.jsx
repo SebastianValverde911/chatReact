@@ -3,8 +3,12 @@ import React from "react";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import Service from '../../services/services';
+import Alert from '../component-alert/Alert';
+import { useDispatch } from 'react-redux';
+import { showAlert,hideAlert } from '../../store/reducerAlert/alertSlice';
 
 const Login = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const ingresarApp = (e) => {
         e.preventDefault();
@@ -14,12 +18,24 @@ const Login = () => {
 
         Service.login(email,pass).then(response => {
             if(response.data.ok) {
-                navigate('/home');
+                dispatch(showAlert({type:'success',message:response.data.msg}));
+                setTimeout(() => {
+                    dispatch(hideAlert()) 
+                    navigate('/home');
+                }, 2000);
             } else {
                 console.log(response.data.msg);
+                dispatch(showAlert({type:'error',message:response.data.msg}));
+                setTimeout(() => {
+                    dispatch(hideAlert()) 
+                }, 2000);
             }
         }).catch((error)=>{
             console.log(error.response.data.msg);
+            dispatch(showAlert({type:'error',message:error.response.data.msg}));
+            setTimeout(() => {
+                dispatch(hideAlert()) 
+            }, 2000);
         })
     };
 
@@ -29,6 +45,8 @@ const Login = () => {
 
     return (
         <div className='container-all-login'>
+            <Alert />
+            
             <div className='container-logo'>
                 <img className="App-logo" src={logo} />
             </div>
