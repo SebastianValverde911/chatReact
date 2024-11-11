@@ -12,6 +12,7 @@
     border-radius: 8px;
     display: flex;
     gap: 5px;
+    z-index: 1;
 }
 
 .container-mensaje .mensaje.success {

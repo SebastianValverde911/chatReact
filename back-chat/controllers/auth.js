@@ -33,13 +33,15 @@ const crearUsuario = async (req, res = express.request) => {
 
         res.status(200).json({
             ok:true,
-            usuario
+            usuario,
+            msg:'El usuario se registro exitosamente.'
         });
     } catch(error) {
         console.log(error);
         res.status(500).json({
             ok:false,
-            error
+            error,
+            msg:'Error al crear el usuario.'
         });
     }
 
@@ -67,13 +69,15 @@ const loginUsuario = async (req, res = express.request) => {
 
         res.status(200).json({
             ok:true,
-            usuario
+            usuario,
+            msg:`Bienvenido!! ${usuario.name}`
         });
     } catch(error) {
         console.log(error);
         res.status(500).json({
             ok:false,
-            error
+            error,
+            msg:'Error al loguearse.'
         });
     }
 };
