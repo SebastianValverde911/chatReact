@@ -8,11 +8,14 @@ import { useDispatch } from 'react-redux';
 import { showAlert,hideAlert } from '../../store/reducerAlert/alertSlice';
 import { userActive } from '../../store/reducerUser/userSlice';
 import { UserContext } from '../../context/UserContex';
+import { SocketContext } from '../../context/socket-context/socketContext';
 
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
+    const { socket } = useContext(SocketContext);
+
     const ingresarApp = (e) => {
         e.preventDefault();
 
@@ -24,6 +27,8 @@ const Login = () => {
                 dispatch(userActive({data:response.data.usuario}));
                 dispatch(showAlert({type:'success',message:response.data.msg}));
                 setUser(response.data.usuario);
+                socket.emit('userConnected', response.data.usuario);
+                
                 setTimeout(() => {
                     dispatch(hideAlert()) 
                     navigate('/home');

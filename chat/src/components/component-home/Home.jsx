@@ -7,12 +7,14 @@ import { showAlert, hideAlert } from "../../store/reducerAlert/alertSlice";
 import { useDispatch } from "react-redux";
 import Alert from "../component-alert/Alert";
 import { UserContext } from "../../context/UserContex";
+import { SocketContext } from "../../context/socket-context/socketContext";
 
 const Home = () => {
     const dispatch = useDispatch();
     const [userData, setUserData] = useState(null);
     const [chatsData, setChatsData] = useState([]);
     const {user} = useContext(UserContext);
+    const {userStatus} = useContext(SocketContext);
 
     useEffect(()=>{
         const fetchUserData = async () => {
@@ -86,7 +88,14 @@ const Home = () => {
                 </div>
                 <div className="container-contacts">
                     {userData !== null ? <> {userData.map(user => (
-                    <CardContac key={user._id} id={user._id} name={user.name} email={user.email} printChatLeftContainer={printChatLeftContainer} />
+                    <CardContac 
+                        key={user._id} 
+                        id={user._id} 
+                        name={user.name} 
+                        email={user.email} 
+                        isOnline={userStatus[user._id] === 'connected'}
+                        printChatLeftContainer={printChatLeftContainer} 
+                    />
                 ))}</> : <></>}
                 </div>
             </div>

@@ -5,6 +5,11 @@ import './CardContac.css';
 
 const CardContac = (data) => {
 
+    let con = ''
+    if(data.isOnline) {
+        con = 'connected';
+    }
+
     return(
         <div className="container-card" data-id={data.id} onClick={() => data.printChatLeftContainer(data.id)}>
             <div className="image-contact">
@@ -14,6 +19,7 @@ const CardContac = (data) => {
                 <div className="name-user" title={data.name}>{data.name}</div>
                 <div className="email-user" title={data.email}>{data.email}</div>
             </div>
+            <div className={`status ${con}`}></div>
         </div>
     )
 }

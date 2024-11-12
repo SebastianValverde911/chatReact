@@ -7,14 +7,17 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/UserProvider';
+import { SocketProvider } from './context/socket-context/socketProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <SocketProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </SocketProvider>
     </UserProvider>
   </BrowserRouter>
   

@@ -6,6 +6,21 @@
     background-color: #868585;
     border-radius: 8px;
     cursor: pointer;
+    position: relative;
+}
+
+.container-card .status {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 12px;
+    background-color: #c2c2c2;
+    border-radius: 20px;
+    top: 10px;
+}
+
+.container-card .status.connected {
+    background-color: #01ff23;
 }
 
 .container-card .image-contact {
