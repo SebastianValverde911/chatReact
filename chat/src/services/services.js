@@ -2,7 +2,7 @@ import axios from 'axios';
 class Service {
 
     registryUserForm(name,email,password) {
-        return axios.post('http://localhost:4000/api/auth/new/',{
+        return axios.post('gentle-contentment-production.up.railway.app/api/auth/new/',{
             name,
             email,
             password
@@ -10,14 +10,14 @@ class Service {
     }
 
     login(email,password) {
-        return axios.post('http://localhost:4000/api/auth/login/',{
+        return axios.post('gentle-contentment-production.up.railway.app/api/auth/login/',{
             email,
             password
         });
     }
 
     getUsers() {
-        return axios.get('http://localhost:4000/api/auth/users/');
+        return axios.get('gentle-contentment-production.up.railway.app/api/auth/users/');
     }
 }
 
