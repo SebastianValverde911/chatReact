@@ -7,7 +7,7 @@ class Server {
     constructor() {
         this.headers = {
             cors: {
-                origin: ['http://127.0.0.1:4000', 'http://localhost:3000'],
+                origin: ['http://127.0.0.1:4000', 'http://localhost:3000','https://silly-babka-367e23.netlify.app'],
                 methods: ["GET","POST"]
             }
         }
