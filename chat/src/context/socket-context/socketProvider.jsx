@@ -7,7 +7,8 @@ export const  SocketProvider = ({children}) => {
     const [userStatus, setUserStatus] = useState({});
 
     useEffect(()=>{
-        const newSocket = io("http://127.0.0.1:4000");
+        /* const newSocket = io("http://127.0.0.1:4000"); */
+        const newSocket = io("gentle-contentment-production.up.railway.app");
         setSocket(newSocket);
 
          // Escuchar la actualización del estado de los usuarios conectados
